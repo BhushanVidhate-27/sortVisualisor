@@ -1,0 +1,25 @@
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.graphArea {
+    display: flex;
+    gap: 1px;
+    justify-content: center;
+    align-items: last baseline;
+    padding-bottom: 1em;
+}
+button {
+    background-color: cadetblue;
+    margin: 0px 30px;
+}
+.suffle-range {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.sorts {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}

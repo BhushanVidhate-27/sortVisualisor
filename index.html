@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Sort Visualisor</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="graphArea b1"></div>
+        <div class="info b2">This Section can help in displaying informatiom about sort algorithm</div>
+        <div class="suffle-range b3">
+            <input class="rangeINP" type="range" min="5" , max="100" value="num" inputmode="numeric">
+            <p class="pINP">50</p>
+            <button onclick="genrate()">Add Candles</button>
+            <br>
+            <button onclick="sfl()">Shuffle them</button>
+        </div>
+        <div class="sorts b4">
+            <button class="btn" onclick="Bubble()">Bubble sort</button>
+            <button onclick="countS()">Counting Sort</button>
+            <button onclick="gnome()">Gnome sort</button>
+            <button onclick="heapSort()">Heap sort</button>
+            <button onclick="insertion()">Insertion sort</button>
+            <button onclick="divide(0, arr.length - 1);">Merge sort</button>
+            <button onclick="oddEvenSort()">Odd Even sort</button>
+            <button onclick="pancakeSort()">Pancake sort</button>
+            <button onclick="qs(0, arr.length-1)">Quick sort</button>
+            <button onclick="radix()">Radix Sort</button>
+            <button onclick="selection()">Selection sort</button>
+            <button onclick="shakerSort()">Shaker sort</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+    <script src="./sortAlgo/bubbleS.js"></script>
+    <script src="./sortAlgo/count.js"></script>
+    <script src="./sortAlgo/gnome.js"></script>
+    <script src="./sortAlgo/insertionS.js"></script>
+    <script src="./sortAlgo/merge.js"></script>
+    <script src="./sortAlgo/quick.js"></script>
+    <script src="./sortAlgo/selectionS.js"></script>
+    <script src="./sortAlgo/radix.js"></script>
+    <script src="./sortAlgo/heap.js"></script>
+    <script src="./sortAlgo/pancake.js"></script>
+    <script src="./sortAlgo/shaker.js"></script>
+    <script src="./sortAlgo/oe.js"></script>
+</body>
+</html>

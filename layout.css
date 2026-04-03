@@ -1,0 +1,37 @@
+body {
+    background-color: black;
+    border: 0.3px dotted white;
+    overflow: hidden;
+    padding: 1rem;
+    color: aliceblue;
+}
+.main {
+    height: 95vh;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.b1 {
+    border: 0.3px dotted white;
+    width: 68%;
+    height: 75%;
+}
+.b2 {
+    padding-bottom: 1em;
+    border: 0.3px dotted white;
+    width: 30%;
+    height: 75%;
+    overflow: scroll;
+}
+.b3 {
+    border: 0.3px dotted white;
+    width: 30%;
+    height: 18%;
+}
+.b4 {
+    border: 0.3px dotted white;
+    width: 68%;
+    height: 18%;
+}
+/* mediaQuries */
