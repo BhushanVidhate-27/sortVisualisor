@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Visualisor</title>
+    <!-- Google Fonts: Outfits for UI elements, JetBrains Mono for code blocks -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- TOP UTILITY HEADER -->
+        <header class="app-header">
+            <div class="logo-area">
+                <a href="index.html" class="back-link" title="Back to Homepage">
+                    <svg class="back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12" stroke-linecap="round"></line>
+                        <polyline points="12 19 5 12 12 5" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                    </svg>
+                    <span>Back</span>
+                </a>
+                <div class="logo-text">
+                    <h1>Sort Visualisor</h1>
+                    <p>Interactive algorithm debugger</p>
+                </div>
+            </div>
+            
+            <!-- RUNTIME TELEMETRY -->
+            <div class="telemetry-bar">
+                <div class="stat-badge">
+                    <span class="stat-label">Comparisons</span>
+                    <span class="stat-value" id="counter-comparisons">0</span>
+                </div>
+                <div class="stat-badge">
+                    <span class="stat-label">Array Writes</span>
+                    <span class="stat-value" id="counter-writes">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN UTILITY DOCK -->
+        <main class="main-content">
+            
+            <!-- LEFT CONTROL BOARD -->
+            <section class="control-panel">
+                <div class="panel-section">
+                    <h2 class="panel-heading">Configure Input</h2>
+                    
+                    <!-- Select Algorithm -->
+                    <div class="control-group">
+                        <label for="algo-select">Sorting Algorithm</label>
+                        <div class="select-container">
+                            <select id="algo-select">
+                                <option value="bubble" selected>Bubble Sort</option>
+                                <option value="selection">Selection Sort</option>
+                                <option value="insertion">Insertion Sort</option>
+                                <option value="merge">Merge Sort</option>
+                                <option value="quick">Quick Sort</option>
+                                <option value="heap">Heap Sort</option>
+                                <option value="counting">Counting Sort</option>
+                                <option value="gnome">Gnome Sort</option>
+                                <option value="oddeven">Odd-Even Sort</option>
+                                <option value="pancake">Pancake Sort</option>
+                                <option value="radix">Radix Sort</option>
+                                <option value="shaker">Shaker Sort</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Array Size Range -->
+                    <div class="control-group">
+                        <div class="slider-info">
+                            <label for="size-slider">Array Size</label>
+                            <span class="badge" id="size-val">50</span>
+                        </div>
+                        <input type="range" id="size-slider" min="5" max="150" value="50">
+                    </div>
+                </div>
+
+                <!-- Custom Array Injection -->
+                <div class="panel-section">
+                    <h2 class="panel-heading">Inject Custom Values</h2>
+                    <div class="input-action-row">
+                        <input type="text" id="custom-array-input" placeholder="e.g. 45, 12, 89, 3, 54">
+                        <button id="btn-custom-submit" class="btn primary-outline-btn">Load</button>
+                    </div>
+                    <p class="input-note">Enter positive integers separated by commas (3 to 200 elements).</p>
+                </div>
+
+                <!-- Debug Execution Playback -->
+                <div class="panel-section execution-section">
+                    <h2 class="panel-heading">Execution State</h2>
+                    
+                    <div class="control-grid">
+                        <button id="btn-play" class="btn play-btn" title="Run animation">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="btn-icon"><path d="M8 5v14l11-7z"/></svg>
+                            Run
+                        </button>
+                        <button id="btn-pause" class="btn pause-btn" disabled title="Pause animation">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="btn-icon"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            Pause
+                        </button>
+                        <button id="btn-step" class="btn step-btn" title="Step forward 1 operation">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="btn-icon"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                            Step
+                        </button>
+                        <button id="btn-reset" class="btn reset-btn" title="Reset array">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8m0 0h5V3m-5 5v5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            Reset
+                        </button>
+                    </div>
+
+                    <div class="utility-actions">
+                        <button id="btn-shuffle" class="btn text-btn">
+                            Shuffle Array
+                        </button>
+                        <button id="btn-generate" class="btn text-btn">
+                            New Ordered
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CENTER GRAPH CANVAS -->
+            <section class="canvas-panel">
+                <div class="graphArea"></div>
+            </section>
+
+            <!-- RIGHT ANALYTICS BOARD -->
+            <section class="analytics-panel">
+                
+                <!-- ALGORITHM SPECS -->
+                <div class="panel-section spec-card">
+                    <h2 id="algo-info-title" class="spec-title">Bubble Sort</h2>
+                    <p id="algo-info-desc" class="spec-desc">
+                        Repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.
+                    </p>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-row">
+                            <span class="metric-label">Best Case Time</span>
+                            <span class="metric-val text-red" id="algo-info-best">O(n)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Average Case Time</span>
+                            <span class="metric-val text-red" id="algo-info-avg">O(n²)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Worst Case Time</span>
+                            <span class="metric-val text-red" id="algo-info-worst">O(n²)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Worst Space</span>
+                            <span class="metric-val" id="algo-info-space">O(1)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Stable</span>
+                            <span class="metric-val" id="algo-info-stable">Yes</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">In-Place</span>
+                            <span class="metric-val" id="algo-info-inplace">Yes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CODE TRACER -->
+                <div class="panel-section code-section">
+                    <h2 class="panel-heading">Code Debug Tracer</h2>
+                    <div class="code-box">
+                        <pre id="code-tracer-content"></pre>
+                    </div>
+                </div>
+
+                <!-- TERMINAL VIEW LOGS -->
+                <div class="panel-section log-section">
+                    <h2 class="panel-heading">Debugger Stream</h2>
+                    <div id="terminal-logs" class="terminal-logs">
+                        <div class="log-entry system">[System] Ready to visualize. Press Play or Step.</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="algorithms.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
