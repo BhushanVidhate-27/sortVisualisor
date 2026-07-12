@@ -1,4 +1,4 @@
-# 🚀 AlgoLab - High-Fidelity Sorting Analytics Visualizer
+# 🚀 Sort Visualizer - High-Fidelity Sorting Analytics Visualizer
 
 **AlgoLab** is an interactive, premium-grade Single-Page Application (SPA) designed to visualize, debug, and synthesize auditory feedback for 12 classic sorting algorithms. 
 
